@@ -1,417 +1,1814 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Mohamed Abdi - Commercial Multi-Engine Pilot | Instrument Rated - Professional Aviation Portfolio">
-    <title>Mohamed Abdi | Commercial Pilot Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <title>Mohamed Abdi | Commercial Multi-Engine Pilot</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="Commercial Multi-Engine Pilot | Instrument Rated. Professional aviation portfolio of Mohamed Abdi."
+  />
+
+  <style>
+    :root {
+      --bg: #050816;
+      --bg-alt: #0f172a;
+      --card: #020617;
+      --accent: #22c55e;
+      --accent-soft: rgba(34, 197, 94, 0.12);
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --border: #1f2937;
+      --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.7);
+      --radius-lg: 18px;
+      --radius-xl: 24px;
+      --radius-full: 999px;
+      --transition: 0.2s ease;
+      --nav-h: 70px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background: radial-gradient(circle at top, #1e293b 0, #020617 42%, #000 100%);
+      color: var(--text);
+      line-height: 1.6;
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    /* Layout Helpers */
+
+    .container {
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    section {
+      padding: 5rem 0;
+    }
+
+    @media (min-width: 900px) {
+      section {
+        padding: 6.5rem 0;
+      }
+    }
+
+    .section-title {
+      font-size: 1.6rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      letter-spacing: 0.02em;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .section-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.8rem;
+      padding: 0.16rem 0.7rem;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--border);
+      background: rgba(15, 23, 42, 0.7);
+      margin-bottom: 0.6rem;
+      color: var(--muted);
+    }
+
+    .section-tag-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 12px rgba(34, 197, 94, 0.8);
+    }
+
+    .muted {
+      color: var(--muted);
+      font-size: 0.95rem;
+      max-width: 38rem;
+    }
+
+    /* Top Bar / Nav */
+
+    .top-bar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(16px);
+      background: linear-gradient(
+        to bottom,
+        rgba(15, 23, 42, 0.98),
+        rgba(15, 23, 42, 0.85),
+        transparent
+      );
+      border-bottom: 1px solid rgba(15, 23, 42, 0.95);
+    }
+
+    .nav {
+      height: var(--nav-h);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .logo-pill {
+      width: 36px;
+      height: 36px;
+      border-radius: var(--radius-full);
+      background: radial-gradient(circle at 30% 0, #22c55e, #16a34a, #14532d);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 30px rgba(22, 163, 74, 0.75);
+      border: 1px solid rgba(74, 222, 128, 0.6);
+    }
+
+    .logo-pill span {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #e5fdf2;
+    }
+
+    .nav-title {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+
+    .nav-title-main {
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .nav-title-sub {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .nav-links {
+      display: none;
+      align-items: center;
+      gap: 1.5rem;
+      font-size: 0.9rem;
+    }
+
+    .nav-link {
+      position: relative;
+      cursor: pointer;
+      color: var(--muted);
+      transition: color var(--transition);
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -0.28rem;
+      width: 0;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(to right, #22c55e, #4ade80);
+      transition: width var(--transition);
+    }
+
+    .nav-link:hover {
+      color: var(--text);
+    }
+
+    .nav-link.active {
+      color: var(--accent);
+    }
+
+    .nav-link.active::after {
+      width: 14px;
+    }
+
+    .nav-cta {
+      display: none;
+    }
+
+    .nav-cta button {
+      padding: 0.5rem 0.95rem;
+      border-radius: var(--radius-full);
+      border: 1px solid rgba(34, 197, 94, 0.5);
+      background: radial-gradient(circle at 0 0, #22c55e, #15803d);
+      color: #ecfdf3;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      box-shadow: 0 12px 30px rgba(21, 128, 61, 0.7);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: transform var(--transition), box-shadow var(--transition),
+        background var(--transition), border-color var(--transition);
+    }
+
+    .nav-cta button span {
+      font-size: 1rem;
+    }
+
+    .nav-cta button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 40px rgba(21, 128, 61, 0.85);
+      border-color: rgba(74, 222, 128, 0.9);
+    }
+
+    /* Mobile nav toggle */
+
+    .nav-toggle {
+      display: inline-flex;
+      width: 34px;
+      height: 34px;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--radius-full);
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      background: rgba(15, 23, 42, 0.95);
+      cursor: pointer;
+      padding: 0;
+    }
+
+    .nav-toggle-bars {
+      width: 16px;
+      height: 12px;
+      position: relative;
+    }
+
+    .nav-toggle-bars span {
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 2px;
+      border-radius: 999px;
+      background: #e5e7eb;
+      transition: transform 0.18s ease, opacity 0.18s ease, top 0.18s ease,
+        bottom 0.18s ease;
+    }
+
+    .nav-toggle-bars span:nth-child(1) {
+      top: 0;
+    }
+
+    .nav-toggle-bars span:nth-child(2) {
+      top: 5px;
+    }
+
+    .nav-toggle-bars span:nth-child(3) {
+      bottom: 0;
+    }
+
+    .nav-toggle.open .nav-toggle-bars span:nth-child(1) {
+      top: 5px;
+      transform: rotate(45deg);
+    }
+
+    .nav-toggle.open .nav-toggle-bars span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .nav-toggle.open .nav-toggle-bars span:nth-child(3) {
+      bottom: 5px;
+      transform: rotate(-45deg);
+    }
+
+    .nav-mobile {
+      display: none;
+      padding: 0 1.5rem 1rem;
+    }
+
+    .nav-mobile-menu {
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background: rgba(15, 23, 42, 0.98);
+      padding: 0.75rem 0.2rem;
+      box-shadow: 0 14px 40px rgba(15, 23, 42, 0.9);
+    }
+
+    .nav-mobile a {
+      display: block;
+      padding: 0.55rem 0.9rem;
+      font-size: 0.95rem;
+      color: var(--muted);
+      border-radius: 12px;
+    }
+
+    .nav-mobile a:hover {
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--text);
+    }
+
+    .nav-mobile .mobile-cta {
+      margin-top: 0.35rem;
+      padding: 0.55rem 0.9rem 0.7rem;
+    }
+
+    .nav-mobile .mobile-cta button {
+      width: 100%;
+      padding: 0.55rem 0.9rem;
+      border-radius: var(--radius-full);
+      border: 1px solid rgba(34, 197, 94, 0.55);
+      background: radial-gradient(circle at 0 0, #22c55e, #15803d);
+      color: #ecfdf3;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      box-shadow: 0 10px 26px rgba(21, 128, 61, 0.85);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+    }
+
+    /* Hero */
+
+    .hero {
+      padding-top: 3rem;
+      padding-bottom: 4.5rem;
+    }
+
+    @media (min-width: 900px) {
+      .hero {
+        padding-top: 4.5rem;
+        padding-bottom: 5rem;
+      }
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.6fr);
+      gap: 2.75rem;
+      align-items: center;
+    }
+
+    @media (min-width: 900px) {
+      .hero-grid {
+        grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.2fr);
+        gap: 3rem;
+      }
+    }
+
+    .hero-kicker {
+      font-size: 0.8rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.2rem 0.9rem;
+      border-radius: var(--radius-full);
+      border: 1px solid rgba(55, 65, 81, 0.7);
+      color: #9ca3af;
+      background: rgba(15, 23, 42, 0.8);
+      margin-bottom: 0.9rem;
+    }
+
+    .hero-kicker-pill {
+      padding: 0.18rem 0.6rem;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: #bbf7d0;
+      font-size: 0.72rem;
+      border: 1px solid rgba(34, 197, 94, 0.45);
+    }
+
+    .hero-title {
+      font-size: clamp(2.1rem, 4vw, 2.9rem);
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-title span {
+      background: linear-gradient(to right, #22c55e, #a3e635);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      color: var(--muted);
+      font-size: 0.98rem;
+      max-width: 36rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .hero-metadata {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .hero-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.35rem 0.85rem;
+      background: rgba(15, 23, 42, 0.9);
+      border-radius: var(--radius-full);
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .hero-chip span {
+      font-size: 1rem;
+    }
+
+    .hero-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      align-items: center;
+      margin-bottom: 1.2rem;
+    }
+
+    .btn-primary,
+    .btn-ghost {
+      padding: 0.72rem 1.25rem;
+      font-size: 0.9rem;
+      border-radius: var(--radius-full);
+      border: 1px solid transparent;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: transform var(--transition), box-shadow var(--transition),
+        border-color var(--transition), background var(--transition),
+        color var(--transition);
+    }
+
+    .btn-primary {
+      background: radial-gradient(circle at 0 0, #22c55e, #15803d);
+      color: #ecfdf3;
+      border-color: rgba(34, 197, 94, 0.7);
+      box-shadow: 0 14px 36px rgba(21, 128, 61, 0.9);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 20px 44px rgba(21, 128, 61, 1);
+      border-color: rgba(74, 222, 128, 0.95);
+    }
+
+    .btn-ghost {
+      background: rgba(15, 23, 42, 0.9);
+      border-color: rgba(31, 41, 55, 0.9);
+      color: var(--muted);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(15, 23, 42, 1);
+      border-color: rgba(55, 65, 81, 1);
+      color: var(--text);
+    }
+
+    .hero-note {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .hero-note span {
+      color: #bbf7d0;
+    }
+
+    .hero-note-dot {
+      display: inline-block;
+      width: 5px;
+      height: 5px;
+      border-radius: 999px;
+      background: #22c55e;
+      margin-right: 0.3rem;
+    }
+
+    .hero-right {
+      position: relative;
+    }
+
+    .hero-card {
+      border-radius: var(--radius-xl);
+      background: radial-gradient(circle at top, #020617, #020617 35%, #020617 100%);
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      padding: 1.4rem;
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card-border {
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: conic-gradient(
+        from 140deg,
+        transparent,
+        rgba(34, 197, 94, 0.5),
+        transparent,
+        transparent
+      );
+      opacity: 0.12;
+      pointer-events: none;
+    }
+
+    .hero-card-inner {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 1.2rem;
+    }
+
+    .hero-avatar-row {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .hero-avatar {
+      width: 52px;
+      height: 52px;
+      border-radius: 20px;
+      border: 1px solid rgba(31, 41, 55, 1);
+      background: radial-gradient(circle at 30% 0, #22c55e, #14532d);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #e5fdf3;
+      box-shadow: 0 18px 40px rgba(22, 163, 74, 0.8);
+    }
+
+    .hero-avatar-text {
+      display: flex;
+      flex-direction: column;
+      gap: 0.08rem;
+    }
+
+    .hero-avatar-name {
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .hero-avatar-role {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .hero-badge {
+      border-radius: 999px;
+      padding: 0.25rem 0.65rem;
+      font-size: 0.72rem;
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .hero-badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 10px rgba(34, 197, 94, 0.9);
+    }
+
+    .hero-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+    }
+
+    .hero-stat {
+      flex: 1;
+      min-width: 115px;
+      border-radius: 16px;
+      padding: 0.75rem 0.85rem;
+      border: 1px solid rgba(31, 41, 55, 0.95);
+      background: radial-gradient(circle at 0 0, #020617, #020617 55%);
+    }
+
+    .hero-stat-label {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-bottom: 0.2rem;
+    }
+
+    .hero-stat-value {
+      font-size: 1.05rem;
+      font-weight: 600;
+    }
+
+    .hero-stat-value span {
+      font-size: 0.8rem;
+      color: var(--muted);
+      font-weight: 400;
+      margin-left: 0.18rem;
+    }
+
+    .hero-pill {
+      margin-top: 0.2rem;
+      font-size: 0.75rem;
+      color: #bbf7d0;
+    }
+
+    .hero-glow {
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(34, 197, 94, 0.32), transparent);
+      filter: blur(1px);
+      opacity: 0.8;
+      top: -40px;
+      right: -60px;
+      pointer-events: none;
+    }
+
+    /* Services */
+
+    .cards {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    @media (min-width: 768px) {
+      .cards {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    .card {
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      padding: 1.15rem 1.1rem;
+      background: radial-gradient(circle at top, #020617, #020617 45%);
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.85);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: linear-gradient(
+        130deg,
+        rgba(34, 197, 94, 0.2),
+        transparent,
+        transparent
+      );
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity var(--transition);
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    .card-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 14px;
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      background: rgba(15, 23, 42, 0.95);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .card-title {
+      font-size: 0.98rem;
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+    }
+
+    .card-body {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 0.8rem;
+    }
+
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+    }
+
+    .card-tag {
+      font-size: 0.72rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: var(--radius-full);
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(31, 41, 55, 0.95);
+      color: #9ca3af;
+    }
+
+    /* Projects */
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 1.1rem;
+      margin-top: 2rem;
+    }
+
+    @media (min-width: 900px) {
+      .projects-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    .project-card {
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      background: radial-gradient(circle at top, #020617, #020617 50%);
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.9);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-thumb {
+      position: relative;
+      padding: 0.85rem 0.85rem 0;
+    }
+
+    .project-thumb-inner {
+      border-radius: 14px;
+      border: 1px solid rgba(31, 41, 55, 0.95);
+      background: radial-gradient(circle at 0 0, #22c55e, #0f172a 55%);
+      height: 130px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      color: #e5fdf3;
+      text-align: center;
+      padding: 0 1rem;
+    }
+
+    .project-body {
+      padding: 0.9rem 0.95rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.7rem;
+      align-items: flex-start;
+    }
+
+    .project-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .project-label {
+      font-size: 0.72rem;
+      padding: 0.16rem 0.55rem;
+      border-radius: 999px;
+      border: 1px solid rgba(34, 197, 94, 0.5);
+      background: rgba(22, 163, 74, 0.15);
+      color: #bbf7d0;
+      white-space: nowrap;
+    }
+
+    .project-text {
+      font-size: 0.84rem;
+      color: var(--muted);
+    }
+
+    .project-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 0.2rem;
+      gap: 0.6rem;
+    }
+
+    .project-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+    }
+
+    .project-stack span {
+      font-size: 0.7rem;
+      padding: 0.16rem 0.5rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(31, 41, 55, 0.95);
+      color: #9ca3af;
+    }
+
+    .project-link {
+      font-size: 0.78rem;
+      color: #a3e635;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      cursor: pointer;
+    }
+
+    .project-link span {
+      font-size: 0.9rem;
+    }
+
+    /* Testimonials */
+
+    .testimonial-grid {
+      margin-top: 2rem;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 1.1rem;
+    }
+
+    @media (min-width: 900px) {
+      .testimonial-grid {
+        grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      }
+    }
+
+    .testimonial-quote {
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      padding: 1.2rem 1.1rem;
+      background: radial-gradient(circle at 0 0, #22c55e0d, #020617 50%);
+      box-shadow: 0 10px 32px rgba(15, 23, 42, 0.9);
+    }
+
+    .quote-icon {
+      font-size: 1.6rem;
+      margin-bottom: 0.4rem;
+      color: #4ade80;
+    }
+
+    .quote-text {
+      font-size: 0.9rem;
+      margin-bottom: 0.6rem;
+      color: var(--text);
+    }
+
+    .quote-name {
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    .quote-role {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .testimonial-list {
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      padding: 1rem 1rem;
+      background: rgba(15, 23, 42, 0.98);
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.9);
+    }
+
+    .testimonial-item {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.6rem;
+      align-items: center;
+      padding: 0.45rem 0.35rem;
+      border-radius: 12px;
+    }
+
+    .testimonial-item + .testimonial-item {
+      border-top: 1px solid rgba(31, 41, 55, 0.85);
+    }
+
+    .testimonial-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 0.02rem;
+    }
+
+    .testimonial-label {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .testimonial-value {
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .testimonial-tag {
+      font-size: 0.7rem;
+      padding: 0.18rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      color: #a3e635;
+    }
+
+    /* Contact */
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 1.6rem;
+      margin-top: 2.1rem;
+    }
+
+    @media (min-width: 900px) {
+      .contact-grid {
+        grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.4fr);
+      }
+    }
+
+    .contact-card {
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      padding: 1.2rem 1.1rem;
+      background: radial-gradient(circle at 0 0, #22c55e17, #020617 55%);
+      box-shadow: 0 10px 32px rgba(15, 23, 42, 0.9);
+    }
+
+    .contact-row {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-top: 0.7rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.8rem;
+      padding: 0.5rem 0.35rem;
+      border-radius: 12px;
+    }
+
+    .contact-item-label {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .contact-item-value {
+      font-size: 0.9rem;
+    }
+
+    .contact-socials {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-top: 0.8rem;
+    }
+
+    .contact-socials a {
+      font-size: 0.78rem;
+      padding: 0.28rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(31, 41, 55, 0.95);
+      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .contact-socials a span {
+      font-size: 0.95rem;
+    }
+
+    .contact-form-card {
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      padding: 1.3rem 1.1rem 1.2rem;
+      background: rgba(15, 23, 42, 0.98);
+      box-shadow: 0 10px 32px rgba(15, 23, 42, 0.95);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 0.8rem;
+      margin-top: 0.6rem;
+    }
+
+    @media (min-width: 768px) {
+      .form-grid-two {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .field label {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .field input,
+    .field textarea {
+      border-radius: 12px;
+      border: 1px solid rgba(31, 41, 55, 0.95);
+      background: rgba(15, 23, 42, 0.95);
+      padding: 0.55rem 0.7rem;
+      font-size: 0.85rem;
+      color: var(--text);
+      outline: none;
+      transition: border-color var(--transition), box-shadow var(--transition),
+        background var(--transition);
+      resize: vertical;
+      min-height: 40px;
+    }
+
+    .field input::placeholder,
+    .field textarea::placeholder {
+      color: #4b5563;
+    }
+
+    .field input:focus,
+    .field textarea:focus {
+      border-color: rgba(74, 222, 128, 0.9);
+      box-shadow: 0 0 0 1px rgba(22, 163, 74, 0.5);
+      background: rgba(15, 23, 42, 1);
+    }
+
+    .form-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.7rem;
+      margin-top: 0.9rem;
+      flex-wrap: wrap;
+    }
+
+    .form-note {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    /* Footer */
+
+    footer {
+      border-top: 1px solid rgba(15, 23, 42, 1);
+      padding: 1.4rem 0 1.6rem;
+      background: radial-gradient(circle at top, #020617, #000 60%);
+      margin-top: 3.5rem;
+    }
+
+    .footer-row {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    @media (min-width: 768px) {
+      .footer-row {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+    }
+
+    .footer-links a {
+      color: var(--muted);
+    }
+
+    .footer-links a:hover {
+      color: var(--text);
+    }
+
+    /* Responsive tweaks */
+
+    @media (min-width: 768px) {
+      .nav-links {
+        display: flex;
+      }
+
+      .nav-cta {
+        display: inline-flex;
+      }
+
+      .nav-toggle,
+      .nav-mobile {
+        display: none;
+      }
+    }
+  </style>
 </head>
+
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container">
-            <div class="nav-brand">Mohamed Abdi</div>
-            <button class="nav-toggle" aria-label="Toggle navigation">
-                <span></span>
-                <span></span>
-                <span></span>
+  <!-- Top Bar -->
+  <header class="top-bar">
+    <div class="container">
+      <nav class="nav">
+        <div class="nav-left">
+          <div class="logo-pill">
+            <span>M</span>
+          </div>
+          <div class="nav-title">
+            <span class="nav-title-main">Mohamed Abdi</span>
+            <span class="nav-title-sub">Commercial Multi-Engine Pilot</span>
+          </div>
+        </div>
+
+        <div class="nav-links">
+          <a class="nav-link active" data-scroll="#hero">Home</a>
+          <a class="nav-link" data-scroll="#services">Experience</a>
+          <a class="nav-link" data-scroll="#projects">Aircraft & Training</a>
+          <a class="nav-link" data-scroll="#testimonials">Qualifications</a>
+          <a class="nav-link" data-scroll="#contact">Contact</a>
+        </div>
+
+        <div class="nav-cta">
+          <button data-scroll="#contact">
+            <span>✉️</span>
+            Let's connect
+          </button>
+        </div>
+
+        <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+          <div class="nav-toggle-bars">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </button>
+      </nav>
+
+      <div class="nav-mobile" id="nav-mobile">
+        <div class="nav-mobile-menu">
+          <a data-scroll="#hero">Home</a>
+          <a data-scroll="#services">Experience</a>
+          <a data-scroll="#projects">Aircraft & Training</a>
+          <a data-scroll="#testimonials">Qualifications</a>
+          <a data-scroll="#contact">Contact</a>
+          <div class="mobile-cta">
+            <button data-scroll="#contact">
+              <span>✉️</span>
+              Get in touch
             </button>
-            <ul class="nav-menu">
-                <li><a href="#about">About</a></li>
-                <li><a href="#experience">Flight Experience</a></li>
-                <li><a href="#aircraft">Aircraft</a></li>
-                <li><a href="#training">Training</a></li>
-                <li><a href="#certificates">Certificates</a></li>
-                <li><a href="#professional">Professional</a></li>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#affiliations">Affiliations</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+          </div>
         </div>
-    </nav>
+      </div>
+    </div>
+  </header>
 
-    <!-- Hero Section -->
-    <header class="hero">
-        <div class="hero-content">
-            <h1 class="hero-title">Mohamed Abdi</h1>
-            <p class="hero-subtitle">Commercial Multi-Engine Pilot | Instrument Rated</p>
-            <div class="hero-cta">
-                <a href="#contact" class="btn btn-primary">Get in Touch</a>
-                <a href="#experience" class="btn btn-secondary">View Experience</a>
+  <!-- Hero -->
+  <main>
+    <section id="hero" class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="hero-kicker">
+            <span class="hero-kicker-pill">Available for opportunities</span>
+            <span>Safety-focused professional aviator</span>
+          </div>
+
+          <h1 class="hero-title">
+            Commercial <span>Multi-Engine</span> Pilot<br />
+            Instrument Rated • Night Operations
+          </h1>
+
+          <p class="hero-subtitle">
+            Dedicated to precision, safety, and sound aeronautical decision-making.
+            Experienced in multi-engine operations, IFR procedures, and complex
+            aircraft systems with a focus on operational excellence.
+          </p>
+
+          <div class="hero-metadata">
+            <div class="hero-chip">
+              <span>✈️</span>
+              Multi-Engine Certified
             </div>
+            <div class="hero-chip">
+              <span>🧭</span>
+              Instrument Rated
+            </div>
+            <div class="hero-chip">
+              <span>🌙</span>
+              Night Operations Qualified
+            </div>
+          </div>
+
+          <div class="hero-cta-row">
+            <button class="btn-primary" data-scroll="#contact">
+              Get in touch
+              <span>→</span>
+            </button>
+            <button class="btn-ghost" data-scroll="#projects">
+              View flight experience
+            </button>
+          </div>
+
+          <p class="hero-note">
+            <span class="hero-note-dot"></span>
+            <span>U.S. Citizen.</span> FAA First Class Medical current.
+            Open to networking and professional opportunities.
+          </p>
         </div>
-        <div class="hero-background"></div>
-    </header>
 
-    <!-- Main Content -->
-    <main>
-        <!-- About / Objective Section -->
-        <section id="about" class="section">
-            <div class="container">
-                <h2 class="section-title">About / Objective</h2>
-                <div class="about-content">
-                    <p>
-                        Dedicated and safety-focused Commercial Multi-Engine Pilot with Instrument Rating, seeking opportunities 
-                        to leverage extensive flight experience and advanced aviation training in a professional flying career. 
-                        Committed to excellence in flight operations, continuous professional development, and maintaining the 
-                        highest standards of safety and professionalism in all aspects of aviation.
-                    </p>
-                    <p>
-                        With a strong foundation in both single and multi-engine operations, combined with advanced instrument 
-                        flying capabilities, I bring a comprehensive skill set to commercial aviation operations. My background 
-                        reflects a commitment to precision, safety, and continuous improvement in all flight operations.
-                    </p>
+        <div class="hero-right">
+          <div class="hero-card">
+            <div class="hero-card-border"></div>
+            <div class="hero-card-inner">
+              <div class="hero-avatar-row">
+                <div class="hero-avatar">M</div>
+                <div class="hero-avatar-text">
+                  <div class="hero-avatar-name">Mohamed Abdi</div>
+                  <div class="hero-avatar-role">
+                    CPL-MEL • Instrument • Night
+                  </div>
                 </div>
+              </div>
+
+              <div class="hero-badges">
+                <div class="hero-badge">
+                  <span class="hero-badge-dot"></span>
+                  CPL-MEL & Instrument Rated
+                </div>
+                <div class="hero-badge">
+                  <span class="hero-badge-dot"></span>
+                  First Class Medical • U.S. Citizen
+                </div>
+              </div>
+
+              <div class="hero-stats">
+                <div class="hero-stat">
+                  <div class="hero-stat-label">Total Time</div>
+                  <div class="hero-stat-value">
+                    369.3
+                    <span>hours</span>
+                  </div>
+                  <div class="hero-pill">PIC: 198.7 hrs</div>
+                </div>
+
+                <div class="hero-stat">
+                  <div class="hero-stat-label">Multi-Engine</div>
+                  <div class="hero-stat-value">
+                    29.2
+                    <span>hours</span>
+                  </div>
+                  <div class="hero-pill">Instrument: 96.1 hrs</div>
+                </div>
+              </div>
             </div>
-        </section>
+          </div>
 
-        <!-- Flight Experience Section -->
-        <section id="experience" class="section section-alt">
-            <div class="container">
-                <h2 class="section-title">Flight Experience</h2>
-                <div class="experience-intro">
-                    <p>Comprehensive flight experience across various aircraft types and operational conditions:</p>
-                </div>
-                <div class="table-wrapper">
-                    <table class="flight-hours-table">
-                        <thead>
-                            <tr>
-                                <th>Category</th>
-                                <th>Hours</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Total Flight Time</td>
-                                <td class="hours">250.0</td>
-                            </tr>
-                            <tr>
-                                <td>Pilot in Command (PIC)</td>
-                                <td class="hours">180.0</td>
-                            </tr>
-                            <tr>
-                                <td>Cross Country</td>
-                                <td class="hours">75.0</td>
-                            </tr>
-                            <tr>
-                                <td>Night</td>
-                                <td class="hours">35.0</td>
-                            </tr>
-                            <tr>
-                                <td>Instrument</td>
-                                <td class="hours">50.0</td>
-                            </tr>
-                            <tr>
-                                <td>Multi-Engine</td>
-                                <td class="hours">45.0</td>
-                            </tr>
-                            <tr>
-                                <td>Solo</td>
-                                <td class="hours">65.0</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </section>
-
-        <!-- Aircraft Flown Section -->
-        <section id="aircraft" class="section">
-            <div class="container">
-                <h2 class="section-title">Aircraft Flown</h2>
-                <div class="aircraft-grid">
-                    <div class="aircraft-card">
-                        <div class="aircraft-icon">✈️</div>
-                        <h3>Cessna 172 Skyhawk</h3>
-                        <p>Single-engine trainer aircraft</p>
-                        <span class="aircraft-type">Single-Engine</span>
-                    </div>
-                    <div class="aircraft-card">
-                        <div class="aircraft-icon">✈️</div>
-                        <h3>Piper PA-28 Cherokee</h3>
-                        <p>Single-engine piston aircraft</p>
-                        <span class="aircraft-type">Single-Engine</span>
-                    </div>
-                    <div class="aircraft-card">
-                        <div class="aircraft-icon">✈️</div>
-                        <h3>Cessna 152</h3>
-                        <p>Light training aircraft</p>
-                        <span class="aircraft-type">Single-Engine</span>
-                    </div>
-                    <div class="aircraft-card">
-                        <div class="aircraft-icon">✈️</div>
-                        <h3>Piper PA-44 Seminole</h3>
-                        <p>Twin-engine trainer</p>
-                        <span class="aircraft-type">Multi-Engine</span>
-                    </div>
-                    <div class="aircraft-card">
-                        <div class="aircraft-icon">✈️</div>
-                        <h3>Beechcraft Baron</h3>
-                        <p>Twin-engine piston aircraft</p>
-                        <span class="aircraft-type">Multi-Engine</span>
-                    </div>
-                    <div class="aircraft-card">
-                        <div class="aircraft-icon">✈️</div>
-                        <h3>Diamond DA42</h3>
-                        <p>Twin-engine composite aircraft</p>
-                        <span class="aircraft-type">Multi-Engine</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Training Emphasis Section -->
-        <section id="training" class="section section-alt">
-            <div class="container">
-                <h2 class="section-title">Training Emphasis</h2>
-                <div class="training-grid">
-                    <div class="training-item">
-                        <div class="training-icon">🎯</div>
-                        <h3>Advanced Flight Maneuvers</h3>
-                        <p>Proficiency in complex flight operations including precision approaches, holds, and emergency procedures</p>
-                    </div>
-                    <div class="training-item">
-                        <div class="training-icon">🌤️</div>
-                        <h3>Instrument Flight Rules (IFR)</h3>
-                        <p>Comprehensive training in instrument flying, including GPS, VOR, ILS approaches, and departure procedures</p>
-                    </div>
-                    <div class="training-item">
-                        <div class="training-icon">⚡</div>
-                        <h3>Multi-Engine Operations</h3>
-                        <p>Specialized training in multi-engine aircraft operations, including engine-out procedures and asymmetric flight</p>
-                    </div>
-                    <div class="training-item">
-                        <div class="training-icon">🌙</div>
-                        <h3>Night Flying</h3>
-                        <p>Extensive night operations training with focus on visual references and safety procedures</p>
-                    </div>
-                    <div class="training-item">
-                        <div class="training-icon">🗺️</div>
-                        <h3>Cross-Country Navigation</h3>
-                        <p>Long-distance flight planning, navigation, and execution across diverse terrain and airspace</p>
-                    </div>
-                    <div class="training-item">
-                        <div class="training-icon">⚠️</div>
-                        <h3>Emergency Procedures</h3>
-                        <p>Rigorous training in emergency scenarios including engine failures, system malfunctions, and abnormal situations</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Certificates & Qualifications Section -->
-        <section id="certificates" class="section">
-            <div class="container">
-                <h2 class="section-title">Certificates & Qualifications</h2>
-                <div class="certificates-list">
-                    <div class="certificate-item">
-                        <div class="certificate-badge">📜</div>
-                        <div class="certificate-content">
-                            <h3>Commercial Pilot License (CPL)</h3>
-                            <p>Multi-Engine Land (MEL)</p>
-                            <span class="certificate-status">Current</span>
-                        </div>
-                    </div>
-                    <div class="certificate-item">
-                        <div class="certificate-badge">📜</div>
-                        <div class="certificate-content">
-                            <h3>Instrument Rating</h3>
-                            <p>Airplane</p>
-                            <span class="certificate-status">Current</span>
-                        </div>
-                    </div>
-                    <div class="certificate-item">
-                        <div class="certificate-badge">📜</div>
-                        <div class="certificate-content">
-                            <h3>Private Pilot License</h3>
-                            <p>Single-Engine Land (SEL)</p>
-                            <span class="certificate-status">Current</span>
-                        </div>
-                    </div>
-                    <div class="certificate-item">
-                        <div class="certificate-badge">📜</div>
-                        <div class="certificate-content">
-                            <h3>FAA Medical Certificate</h3>
-                            <p>First Class Medical</p>
-                            <span class="certificate-status">Current</span>
-                        </div>
-                    </div>
-                    <div class="certificate-item">
-                        <div class="certificate-badge">📜</div>
-                        <div class="certificate-content">
-                            <h3>High Performance Endorsement</h3>
-                            <p>Aircraft with engines over 200 HP</p>
-                            <span class="certificate-status">Current</span>
-                        </div>
-                    </div>
-                    <div class="certificate-item">
-                        <div class="certificate-badge">📜</div>
-                        <div class="certificate-content">
-                            <h3>Complex Aircraft Endorsement</h3>
-                            <p>Retractable gear, flaps, and controllable propeller</p>
-                            <span class="certificate-status">Current</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Professional Experience Section -->
-        <section id="professional" class="section section-alt">
-            <div class="container">
-                <h2 class="section-title">Professional Experience</h2>
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <h3>Charter Pilot</h3>
-                            <p class="company">Regional Aviation Services</p>
-                            <p class="period">2024 - Present</p>
-                            <ul>
-                                <li>Conduct safe and efficient charter flights for corporate and private clients</li>
-                                <li>Maintain detailed flight logs and ensure compliance with all FAA regulations</li>
-                                <li>Perform thorough pre-flight inspections and flight planning operations</li>
-                                <li>Provide exceptional customer service while maintaining focus on safety</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <h3>Flight Instructor (Freelance)</h3>
-                            <p class="company">Various Flight Schools</p>
-                            <p class="period">2023 - 2024</p>
-                            <ul>
-                                <li>Provided flight instruction for private pilot and instrument rating candidates</li>
-                                <li>Developed customized training programs tailored to individual student needs</li>
-                                <li>Maintained high pass rates while emphasizing safety and proper technique</li>
-                                <li>Conducted ground school instruction and flight proficiency checks</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <h3>Safety Pilot</h3>
-                            <p class="company">Local Aviation Community</p>
-                            <p class="period">2022 - 2023</p>
-                            <ul>
-                                <li>Assisted pilots in maintaining instrument currency requirements</li>
-                                <li>Provided safety monitoring during simulated instrument conditions</li>
-                                <li>Helped pilots improve their instrument flying skills and confidence</li>
-                                <li>Built valuable network within the aviation community</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Education Section -->
-        <section id="education" class="section">
-            <div class="container">
-                <h2 class="section-title">Education</h2>
-                <div class="education-grid">
-                    <div class="education-item">
-                        <div class="education-icon">🎓</div>
-                        <h3>Bachelor of Science in Aviation</h3>
-                        <p class="institution">Professional Flight School</p>
-                        <p class="year">2022</p>
-                        <p class="description">Comprehensive aviation education including aerodynamics, meteorology, aircraft systems, and aviation regulations</p>
-                    </div>
-                    <div class="education-item">
-                        <div class="education-icon">🎓</div>
-                        <h3>Commercial Multi-Engine Training</h3>
-                        <p class="institution">Advanced Flight Academy</p>
-                        <p class="year">2023</p>
-                        <p class="description">Intensive multi-engine and commercial pilot training program with emphasis on advanced flight operations</p>
-                    </div>
-                    <div class="education-item">
-                        <div class="education-icon">🎓</div>
-                        <h3>Instrument Rating Course</h3>
-                        <p class="institution">Instrument Flight Center</p>
-                        <p class="year">2022</p>
-                        <p class="description">Comprehensive instrument flight training including precision approaches and advanced navigation systems</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Affiliations Section -->
-        <section id="affiliations" class="section section-alt">
-            <div class="container">
-                <h2 class="section-title">Professional Affiliations</h2>
-                <div class="affiliations-grid">
-                    <div class="affiliation-card">
-                        <h3>Aircraft Owners and Pilots Association (AOPA)</h3>
-                        <p>Member since 2021</p>
-                        <p class="affiliation-desc">Active member supporting general aviation advocacy and safety initiatives</p>
-                    </div>
-                    <div class="affiliation-card">
-                        <h3>Experimental Aircraft Association (EAA)</h3>
-                        <p>Member since 2022</p>
-                        <p class="affiliation-desc">Participating in aviation education and community outreach programs</p>
-                    </div>
-                    <div class="affiliation-card">
-                        <h3>National Association of Flight Instructors (NAFI)</h3>
-                        <p>Member since 2023</p>
-                        <p class="affiliation-desc">Committed to excellence in flight instruction and continuing education</p>
-                    </div>
-                    <div class="affiliation-card">
-                        <h3>Local Pilot Association</h3>
-                        <p>Active Member</p>
-                        <p class="affiliation-desc">Contributing to local aviation community events and safety seminars</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="section">
-            <div class="container">
-                <h2 class="section-title">Contact Information</h2>
-                <div class="contact-content">
-                    <p class="contact-intro">
-                        I'm always interested in discussing new opportunities in commercial aviation, 
-                        networking with fellow aviation professionals, or answering questions about my experience.
-                    </p>
-                    <div class="contact-methods">
-                        <div class="contact-item">
-                            <div class="contact-icon">📞</div>
-                            <div class="contact-details">
-                                <h3>Phone</h3>
-                                <a href="tel:+1234567890">+1 (234) 567-890</a>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">✉️</div>
-                            <div class="contact-details">
-                                <h3>Email</h3>
-                                <a href="mailto:mohamed.abdi@aviation.com">mohamed.abdi@aviation.com</a>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">💼</div>
-                            <div class="contact-details">
-                                <h3>LinkedIn</h3>
-                                <a href="https://www.linkedin.com/in/mohamedabdi" target="_blank" rel="noopener noreferrer">linkedin.com/in/mohamedabdi</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2025 Mohamed Abdi. All rights reserved.</p>
-            <p class="footer-subtitle">Commercial Multi-Engine Pilot | Instrument Rated</p>
+          <div class="hero-glow"></div>
         </div>
-    </footer>
+      </div>
+    </section>
 
-    <script src="script.js"></script>
+    <!-- Services -->
+    <section id="services">
+      <div class="container">
+        <div class="section-tag">
+          <span class="section-tag-dot"></span>
+          Flight Experience Summary
+        </div>
+        <h2 class="section-title">Flight Hours & Experience</h2>
+        <p class="muted">
+          Comprehensive flight training with emphasis on safety, standard operating
+          procedures, and sound aeronautical decision-making across multiple aircraft types.
+        </p>
+
+        <div class="cards">
+          <article class="card">
+            <div class="card-icon">⏱️</div>
+            <h3 class="card-title">Total Flight Time: 369.3 hrs</h3>
+            <p class="card-body">
+              Comprehensive flight experience across single and multi-engine
+              platforms with emphasis on precision flying, crew resource
+              management, and adherence to standard operating procedures.
+            </p>
+            <div class="card-tags">
+              <span class="card-tag">PIC: 198.7 hrs</span>
+              <span class="card-tag">Cross-Country: 55.5 hrs</span>
+              <span class="card-tag">Night: 82.0 hrs</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">✈️</div>
+            <h3 class="card-title">Multi-Engine: 29.2 hrs</h3>
+            <p class="card-body">
+              Multi-engine training in Piper PA-44 Seminole with focus on
+              engine-out procedures, VMC awareness, and asymmetric thrust
+              management in normal and emergency operations.
+            </p>
+            <div class="card-tags">
+              <span class="card-tag">MEL certified</span>
+              <span class="card-tag">Engine-out ops</span>
+              <span class="card-tag">VMC awareness</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">🧭</div>
+            <h3 class="card-title">Instrument: 96.1 hrs</h3>
+            <p class="card-body">
+              Instrument flight experience including approaches, holds,
+              airway navigation, and IFR flight planning with emphasis on
+              workload management and situational awareness.
+            </p>
+            <div class="card-tags">
+              <span class="card-tag">IFR certified</span>
+              <span class="card-tag">Actual: 58.2 hrs</span>
+              <span class="card-tag">Sim: 37.9 hrs</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+      <div class="container">
+        <div class="section-tag">
+          <span class="section-tag-dot"></span>
+          Training platforms & experience
+        </div>
+        <h2 class="section-title">Aircraft & Training Focus</h2>
+        <p class="muted">
+          Experience across multiple aircraft types and training environments
+          with emphasis on safety, standard operating procedures, and continuous
+          skill development.
+        </p>
+
+        <div class="projects-grid">
+          <article class="project-card">
+            <div class="project-thumb">
+              <div class="project-thumb-inner">
+                Piper PA-44-180 Seminole<br>
+                Multi-Engine Training
+              </div>
+            </div>
+            <div class="project-body">
+              <div class="project-header">
+                <h3 class="project-title">Multi-Engine Operations</h3>
+                <span class="project-label">PA-44 Seminole</span>
+              </div>
+              <p class="project-text">
+                Advanced multi-engine training with emphasis on engine-out
+                procedures, VMC awareness, and complex aircraft systems management.
+              </p>
+              <div class="project-footer">
+                <div class="project-stack">
+                  <span>29.2 hours</span>
+                  <span>Complex</span>
+                  <span>Retractable</span>
+                </div>
+                <button class="project-link" data-scroll="#contact">
+                  Learn more
+                  <span>↗</span>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-thumb">
+              <div class="project-thumb-inner">
+                Cessna 172 & Piper PA-28<br>
+                Primary & IFR Training
+              </div>
+            </div>
+            <div class="project-body">
+              <div class="project-header">
+                <h3 class="project-title">Single-Engine Training</h3>
+                <span class="project-label">C-172 / PA-28</span>
+              </div>
+              <p class="project-text">
+                Foundation training in single-engine aircraft including VFR operations,
+                cross-country navigation, and instrument procedures.
+              </p>
+              <div class="project-footer">
+                <div class="project-stack">
+                  <span>Cessna 172</span>
+                  <span>Piper Archer</span>
+                  <span>Warrior</span>
+                </div>
+                <button class="project-link" data-scroll="#contact">
+                  View details
+                  <span>↗</span>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-thumb">
+              <div class="project-thumb-inner">
+                Advanced Aviation Training Devices<br>
+                Simulator Experience
+              </div>
+            </div>
+            <div class="project-body">
+              <div class="project-header">
+                <h3 class="project-title">Simulator Training</h3>
+                <span class="project-label">AATD / FTD</span>
+              </div>
+              <p class="project-text">
+                Instrument procedures training in Advanced Aviation Training Devices
+                for approach procedures, holds, and emergency scenario practice.
+              </p>
+              <div class="project-footer">
+                <div class="project-stack">
+                  <span>37.9 hours</span>
+                  <span>IFR procedures</span>
+                  <span>Emergency ops</span>
+                </div>
+                <button class="project-link" data-scroll="#contact">
+                  Discuss
+                  <span>↗</span>
+                </button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials">
+      <div class="container">
+        <div class="section-tag">
+          <span class="section-tag-dot"></span>
+          Certifications & qualifications
+        </div>
+        <h2 class="section-title">Professional Credentials</h2>
+        <p class="muted">
+          Current FAA certifications, ratings, and qualifications with emphasis
+          on maintaining currency and continuing professional development.
+        </p>
+
+        <div class="testimonial-grid">
+          <div class="testimonial-quote">
+            <div class="quote-icon">✈️</div>
+            <p class="quote-text">
+              Safety-focused aviator with comprehensive training in multi-engine,
+              instrument, and night operations. Committed to operational excellence,
+              continuous learning, and sound aeronautical decision-making in all
+              phases of flight.
+            </p>
+            <div class="quote-name">Professional Objective</div>
+            <div class="quote-role">Seeking networking & aviation opportunities</div>
+          </div>
+
+          <div class="testimonial-list">
+            <div class="testimonial-item">
+              <div class="testimonial-meta">
+                <span class="testimonial-label">Pilot Certificate</span>
+                <span class="testimonial-value">Commercial SEL / MEL</span>
+              </div>
+              <span class="testimonial-tag">Active</span>
+            </div>
+
+            <div class="testimonial-item">
+              <div class="testimonial-meta">
+                <span class="testimonial-label">Instrument Rating</span>
+                <span class="testimonial-value">Airplane</span>
+              </div>
+              <span class="testimonial-tag">Current</span>
+            </div>
+
+            <div class="testimonial-item">
+              <div class="testimonial-meta">
+                <span class="testimonial-label">Medical</span>
+                <span class="testimonial-value">FAA First Class</span>
+              </div>
+              <span class="testimonial-tag">Current</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Professional Experience -->
+    <section id="experience" style="padding: 4rem 0;">
+      <div class="container">
+        <div class="section-tag">
+          <span class="section-tag-dot"></span>
+          Career background
+        </div>
+        <h2 class="section-title">Professional Experience</h2>
+        <p class="muted">
+          Proven track record in high-responsibility operational roles with emphasis
+          on safety, attention to detail, and effective communication.
+        </p>
+
+        <div class="cards" style="grid-template-columns: minmax(0, 1fr); margin-top: 1.5rem;">
+          <article class="card">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.6rem;">
+              <div>
+                <h3 class="card-title" style="margin-bottom: 0.2rem;">Security Operations Center Specialist</h3>
+                <div style="font-size: 0.85rem; color: var(--muted);">Hunt Oil Company — Dallas, TX</div>
+              </div>
+              <span class="project-label">2024 — Present</span>
+            </div>
+            <p class="card-body" style="margin-bottom: 0.5rem;">
+              Monitor critical infrastructure in 24/7 operations environment. Support incident
+              response, coordinate with leadership, and maintain accurate operational logs.
+            </p>
+          </article>
+
+          <article class="card">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.6rem;">
+              <div>
+                <h3 class="card-title" style="margin-bottom: 0.2rem;">Supervisor — Ramp & Customer Service</h3>
+                <div style="font-size: 0.85rem; color: var(--muted);">Envoy Air — CMH Airport</div>
+              </div>
+              <span class="project-label">2019 — 2023</span>
+            </div>
+            <p class="card-body" style="margin-bottom: 0.5rem;">
+              Led ramp and customer service operations. Coordinated with dispatch, flight crews,
+              and ground personnel. Managed weight-and-balance procedures and safety protocols.
+            </p>
+          </article>
+        </div>
+
+        <div style="margin-top: 1.5rem; padding: 1rem 1.1rem; border-radius: 16px; border: 1px solid var(--border); background: rgba(15, 23, 42, 0.5);">
+          <div style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.4rem;">
+            <span style="font-size: 1.2rem;">🎓</span>
+            <h3 style="font-size: 0.95rem; font-weight: 600;">Education</h3>
+          </div>
+          <div style="font-size: 0.85rem; color: var(--muted);">
+            <strong style="color: var(--text);">Bachelor of Science — Aviation</strong><br>
+            Liberty University (In Progress)
+          </div>
+          <div style="margin-top: 0.8rem; font-size: 0.85rem; color: var(--muted);">
+            <strong style="color: var(--text);">Professional Organizations:</strong><br>
+            AOPA — Active Member | EAA — North Texas Chapter Member
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <div class="container">
+        <div class="section-tag">
+          <span class="section-tag-dot"></span>
+          Let's connect
+        </div>
+        <h2 class="section-title">Contact Information</h2>
+        <p class="muted">
+          Open to aviation networking, professional opportunities, and time-building
+          discussions. Feel free to reach out via any of the methods below.
+        </p>
+
+        <div class="contact-grid">
+          <aside class="contact-card">
+            <h3 style="font-size: 1rem; font-weight: 600;">
+              Quick details
+            </h3>
+            <div class="contact-row">
+              <div class="contact-item">
+                <div>
+                  <div class="contact-item-label">Location</div>
+                  <div class="contact-item-value">Dallas, Texas (USA)</div>
+                </div>
+                <span class="testimonial-tag">Central Time</span>
+              </div>
+
+              <div class="contact-item">
+                <div>
+                  <div class="contact-item-label">Phone</div>
+                  <div class="contact-item-value">
+                    614-316-3592
+                  </div>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div>
+                  <div class="contact-item-label">Status</div>
+                  <div class="contact-item-value">
+                    U.S. Citizen • Current Medical
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="contact-socials">
+              <a href="mailto:moha.abdi105@gmail.com">
+                <span>✉️</span>
+                moha.abdi105@gmail.com
+              </a>
+              <a href="https://linkedin.com/in/mohamedabditexan" target="_blank" rel="noopener">
+                <span>💼</span>
+                LinkedIn Profile
+              </a>
+              <a href="tel:6143163592">
+                <span>📞</span>
+                614-316-3592
+              </a>
+            </div>
+          </aside>
+
+          <div class="contact-form-card">
+            <h3 style="font-size: 1rem; font-weight: 600; margin-bottom: 0.6rem;">
+              Quick Contact
+            </h3>
+            <p style="font-size: 0.85rem; color: var(--muted); margin-bottom: 1.2rem;">
+              Prefer direct contact? Use the phone or email options on the left.
+              Or send a quick message below and I'll get back to you promptly.
+            </p>
+            <form onsubmit="handleFormSubmit(event)">
+              <div class="form-grid form-grid-two">
+                <div class="field">
+                  <label for="name">Name</label>
+                  <input id="name" name="name" type="text" placeholder="Your name" required />
+                </div>
+                <div class="field">
+                  <label for="email">Email</label>
+                  <input id="email" name="email" type="email" placeholder="you@email.com" required />
+                </div>
+              </div>
+
+              <div class="form-grid">
+                <div class="field">
+                  <label for="message">Message</label>
+                  <textarea id="message" name="message" rows="5"
+                    placeholder="Let me know what you'd like to discuss..."
+                    required></textarea>
+                </div>
+              </div>
+
+              <div class="form-footer">
+                <button type="submit" class="btn-primary">
+                  Send message
+                  <span>→</span>
+                </button>
+                <p class="form-note">
+                  Response typically within 24 hours
+                </p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-row">
+      <div>© <span id="year"></span> Mohamed Abdi — Commercial Multi-Engine Pilot</div>
+      <div class="footer-links">
+        <a data-scroll="#hero">Back to top</a>
+        <a data-scroll="#services">Experience</a>
+        <a data-scroll="#contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Set current year in footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Smooth scroll
+    function scrollToTarget(selector) {
+      const target = document.querySelector(selector);
+      if (!target) return;
+
+      const navHeight = 70;
+      const rect = target.getBoundingClientRect();
+      const offsetTop = rect.top + window.scrollY - navHeight + 1;
+
+      window.scrollTo({
+        top: offsetTop,
+        behavior: "smooth",
+      });
+    }
+
+    // Attach scroll handlers
+    document.querySelectorAll("[data-scroll]").forEach((el) => {
+      el.addEventListener("click", (e) => {
+        const selector = el.getAttribute("data-scroll");
+        if (selector && selector.startsWith("#")) {
+          e.preventDefault();
+          scrollToTarget(selector);
+          closeMobileNav();
+        }
+      });
+    });
+
+    // Active nav link on scroll (simple)
+    const sections = ["#hero", "#services", "#projects", "#testimonials", "#experience", "#contact"]
+      .map((id) => document.querySelector(id))
+      .filter(Boolean);
+
+    function setActiveNav() {
+      const scrollPos = window.scrollY + 120;
+      let currentId = "#hero";
+
+      sections.forEach((section) => {
+        const rect = section.getBoundingClientRect();
+        const top = rect.top + window.scrollY;
+        if (scrollPos >= top) {
+          currentId = "#" + section.id;
+        }
+      });
+
+      document.querySelectorAll(".nav-link").forEach((link) => {
+        const selector = link.getAttribute("data-scroll");
+        if (selector === currentId) {
+          link.classList.add("active");
+        } else {
+          link.classList.remove("active");
+        }
+      });
+    }
+
+    window.addEventListener("scroll", setActiveNav);
+    window.addEventListener("load", setActiveNav);
+
+    // Mobile nav toggle
+    const navToggle = document.querySelector(".nav-toggle");
+    const navMobile = document.getElementById("nav-mobile");
+
+    function closeMobileNav() {
+      if (!navToggle || !navMobile) return;
+      navToggle.classList.remove("open");
+      navToggle.setAttribute("aria-expanded", "false");
+      navMobile.style.display = "none";
+    }
+
+    if (navToggle && navMobile) {
+      navToggle.addEventListener("click", () => {
+        const isOpen = navToggle.classList.toggle("open");
+        navToggle.setAttribute("aria-expanded", String(isOpen));
+        navMobile.style.display = isOpen ? "block" : "none";
+      });
+    }
+
+    // Simple demo form handler
+    function handleFormSubmit(event) {
+      event.preventDefault();
+      alert(
+        "Demo form submission.\n\nFor direct contact, please use:\nEmail: moha.abdi105@gmail.com\nPhone: 614-316-3592"
+      );
+      event.target.reset();
+    }
+  </script>
 </body>
 </html>

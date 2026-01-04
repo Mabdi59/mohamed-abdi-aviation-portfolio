@@ -6,8 +6,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta
     name="description"
-    content="Commercial Multi-Engine Pilot | Instrument Rated. Professional aviation portfolio of Mohamed Abdi."
+    content="Commercial Multi-Engine Pilot | Instrument Rated | Professional aviation portfolio of Mohamed Abdi."
   />
+  <meta name="keywords" content="commercial pilot, multi-engine pilot, instrument rating, aviation, CPL-MEL, Mohamed Abdi, Dallas pilot" />
+  <meta name="author" content="Mohamed Abdi" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>✈️</text></svg>" />
+  
+  <!-- Open Graph / Social Media Metadata -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://mabdi59.github.io/mohamed-abdi-aviation-portfolio/" />
+  <meta property="og:title" content="Mohamed Abdi | Commercial Multi-Engine Pilot" />
+  <meta property="og:description" content="Commercial Multi-Engine Pilot | Instrument Rated | 369+ flight hours | Based in Dallas, Texas" />
+  <meta property="og:image" content="https://mabdi59.github.io/mohamed-abdi-aviation-portfolio/og-image.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  
+  <!-- Canonical Link -->
+  <link rel="canonical" href="https://mabdi59.github.io/mohamed-abdi-aviation-portfolio/" />
 
   <style>
     :root {
@@ -412,6 +426,7 @@
     .hero-title span {
       background: linear-gradient(to right, #22c55e, #a3e635);
       -webkit-background-clip: text;
+      background-clip: text;
       color: transparent;
     }
 
@@ -1152,7 +1167,70 @@
         display: none;
       }
     }
+
+    /* Reduce motion for accessibility */
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
   </style>
+
+  <!-- Structured Data for SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Mohamed Abdi",
+    "jobTitle": "Commercial Multi-Engine Pilot",
+    "description": "Commercial Multi-Engine Pilot with Instrument Rating, 369+ flight hours, based in Dallas, Texas",
+    "url": "https://mabdi59.github.io/mohamed-abdi-aviation-portfolio/",
+    "email": "moha.abdi105@gmail.com",
+    "telephone": "+1-614-316-3592",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Dallas",
+      "addressRegion": "TX",
+      "addressCountry": "US"
+    },
+    "alumniOf": {
+      "@type": "CollegeOrUniversity",
+      "name": "Liberty University"
+    },
+    "hasCredential": [
+      {
+        "@type": "EducationalOccupationalCredential",
+        "name": "Commercial Pilot License - Multi-Engine Land",
+        "credentialCategory": "certification"
+      },
+      {
+        "@type": "EducationalOccupationalCredential",
+        "name": "Instrument Rating - Airplane",
+        "credentialCategory": "certification"
+      },
+      {
+        "@type": "EducationalOccupationalCredential",
+        "name": "FAA First Class Medical Certificate",
+        "credentialCategory": "certification"
+      }
+    ],
+    "memberOf": [
+      {
+        "@type": "Organization",
+        "name": "Aircraft Owners and Pilots Association (AOPA)"
+      },
+      {
+        "@type": "Organization",
+        "name": "Experimental Aircraft Association (EAA)"
+      }
+    ]
+  }
+  </script>
 </head>
 
 <body>
@@ -1172,7 +1250,7 @@
 
         <div class="nav-links">
           <a class="nav-link active" data-scroll="#hero">Home</a>
-          <a class="nav-link" data-scroll="#services">Experience</a>
+          <a class="nav-link" data-scroll="#flight-experience">Flight Hours</a>
           <a class="nav-link" data-scroll="#projects">Aircraft & Training</a>
           <a class="nav-link" data-scroll="#testimonials">Qualifications</a>
           <a class="nav-link" data-scroll="#contact">Contact</a>
@@ -1185,8 +1263,8 @@
           </button>
         </div>
 
-        <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
-          <div class="nav-toggle-bars">
+        <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+          <div class="nav-toggle-bars" aria-hidden="true">
             <span></span>
             <span></span>
             <span></span>
@@ -1197,7 +1275,7 @@
       <div class="nav-mobile" id="nav-mobile">
         <div class="nav-mobile-menu">
           <a data-scroll="#hero">Home</a>
-          <a data-scroll="#services">Experience</a>
+          <a data-scroll="#flight-experience">Flight Hours</a>
           <a data-scroll="#projects">Aircraft & Training</a>
           <a data-scroll="#testimonials">Qualifications</a>
           <a data-scroll="#contact">Contact</a>
@@ -1236,7 +1314,7 @@
           <div class="hero-metadata">
             <div class="hero-chip">
               <span>✈️</span>
-              Multi-Engine Certified
+              Multi-Engine Certified (MEL)
             </div>
             <div class="hero-chip">
               <span>🧭</span>
@@ -1249,11 +1327,14 @@
           </div>
 
           <div class="hero-cta-row">
-            <button class="btn-primary" data-scroll="#contact">
+            <button class="btn-primary" data-scroll="#contact" aria-label="Navigate to contact section">
               Get in touch
-              <span>→</span>
+              <span aria-hidden="true">→</span>
             </button>
-            <button class="btn-ghost" data-scroll="#projects">
+            <button class="btn-ghost" onclick="window.open('resume.pdf', '_blank')" aria-label="Download resume PDF in new tab">
+              Download résumé
+            </button>
+            <button class="btn-ghost" data-scroll="#projects" aria-label="View aircraft and training experience">
               View flight experience
             </button>
           </div>
@@ -1261,7 +1342,12 @@
           <p class="hero-note">
             <span class="hero-note-dot"></span>
             <span>U.S. Citizen.</span> FAA First Class Medical current.
-            Open to networking and professional opportunities.
+            Based in Dallas, Texas. Training & operations in North Texas region.
+          </p>
+
+          <p class="hero-note">
+            <span class="hero-note-dot"></span>
+            <span>Career focus:</span> time-building, multi-crew operations, and pathway program opportunities.
           </p>
         </div>
 
@@ -1294,19 +1380,19 @@
                 <div class="hero-stat">
                   <div class="hero-stat-label">Total Time</div>
                   <div class="hero-stat-value">
-                    369.3
+                    369+
                     <span>hours</span>
                   </div>
-                  <div class="hero-pill">PIC: 198.7 hrs</div>
+                  <div class="hero-pill">PIC: 199+ hrs</div>
                 </div>
 
                 <div class="hero-stat">
                   <div class="hero-stat-label">Multi-Engine</div>
                   <div class="hero-stat-value">
-                    29.2
+                    29+
                     <span>hours</span>
                   </div>
-                  <div class="hero-pill">Instrument: 96.1 hrs</div>
+                  <div class="hero-pill">Instrument: 96+ hrs</div>
                 </div>
               </div>
             </div>
@@ -1317,8 +1403,8 @@
       </div>
     </section>
 
-    <!-- Services -->
-    <section id="services">
+    <!-- Flight Experience -->
+    <section id="flight-experience">
       <div class="container">
         <div class="section-tag">
           <span class="section-tag-dot"></span>
@@ -1333,46 +1419,46 @@
         <div class="cards">
           <article class="card">
             <div class="card-icon">⏱️</div>
-            <h3 class="card-title">Total Flight Time: 369.3 hrs</h3>
+            <h3 class="card-title">Total Flight Time: 369+ hrs</h3>
             <p class="card-body">
               Comprehensive flight experience across single and multi-engine
-              platforms with emphasis on precision flying, crew resource
+              platforms with focus on precision flying, crew resource
               management, and adherence to standard operating procedures.
             </p>
             <div class="card-tags">
-              <span class="card-tag">PIC: 198.7 hrs</span>
-              <span class="card-tag">Cross-Country: 55.5 hrs</span>
-              <span class="card-tag">Night: 82.0 hrs</span>
+              <span class="card-tag">PIC: 199+ hrs</span>
+              <span class="card-tag">Cross-Country: 56+ hrs</span>
+              <span class="card-tag">Night: 82+ hrs</span>
             </div>
           </article>
 
           <article class="card">
             <div class="card-icon">✈️</div>
-            <h3 class="card-title">Multi-Engine: 29.2 hrs</h3>
+            <h3 class="card-title">Multi-Engine: 29+ hrs</h3>
             <p class="card-body">
-              Multi-engine training in Piper PA-44 Seminole with focus on
+              Multi-engine training in Piper PA-44 Seminole focusing on
               engine-out procedures, VMC awareness, and asymmetric thrust
               management in normal and emergency operations.
             </p>
             <div class="card-tags">
+              <span class="card-tag">PA44 Seminole</span>
               <span class="card-tag">MEL certified</span>
               <span class="card-tag">Engine-out ops</span>
-              <span class="card-tag">VMC awareness</span>
             </div>
           </article>
 
           <article class="card">
             <div class="card-icon">🧭</div>
-            <h3 class="card-title">Instrument: 96.1 hrs</h3>
+            <h3 class="card-title">Instrument: 96+ hrs</h3>
             <p class="card-body">
               Instrument flight experience including approaches, holds,
-              airway navigation, and IFR flight planning with emphasis on
+              airway navigation, and IFR flight planning focusing on
               workload management and situational awareness.
             </p>
             <div class="card-tags">
               <span class="card-tag">IFR certified</span>
-              <span class="card-tag">Actual: 58.2 hrs</span>
-              <span class="card-tag">Sim: 37.9 hrs</span>
+              <span class="card-tag">Actual: 58+ hrs</span>
+              <span class="card-tag">Sim: 38+ hrs</span>
             </div>
           </article>
         </div>
@@ -1412,9 +1498,9 @@
               </p>
               <div class="project-footer">
                 <div class="project-stack">
-                  <span>29.2 hours</span>
+                  <span>PA44</span>
+                  <span>29+ hours</span>
                   <span>Complex</span>
-                  <span>Retractable</span>
                 </div>
                 <button class="project-link" data-scroll="#contact">
                   Learn more
@@ -1442,9 +1528,9 @@
               </p>
               <div class="project-footer">
                 <div class="project-stack">
-                  <span>Cessna 172</span>
-                  <span>Piper Archer</span>
-                  <span>Warrior</span>
+                  <span>C172 Skyhawk</span>
+                  <span>PA28 Archer</span>
+                  <span>PA28 Warrior</span>
                 </div>
                 <button class="project-link" data-scroll="#contact">
                   View details
@@ -1472,9 +1558,9 @@
               </p>
               <div class="project-footer">
                 <div class="project-stack">
-                  <span>37.9 hours</span>
+                  <span>AATD/FTD</span>
+                  <span>38+ hours</span>
                   <span>IFR procedures</span>
-                  <span>Emergency ops</span>
                 </div>
                 <button class="project-link" data-scroll="#contact">
                   Discuss
@@ -1551,8 +1637,9 @@
         </div>
         <h2 class="section-title">Professional Experience</h2>
         <p class="muted">
-          Proven track record in high-responsibility operational roles with emphasis
-          on safety, attention to detail, and effective communication.
+          Proven track record in high-responsibility operational roles focusing on
+          safety, attention to detail, and effective communication. Flight training
+          and operations primarily based at KDTO (Denton, TX) and surrounding North Texas airports.
         </p>
 
         <div class="cards" style="grid-template-columns: minmax(0, 1fr); margin-top: 1.5rem;">
@@ -1659,7 +1746,7 @@
               </a>
               <a href="tel:6143163592">
                 <span>📞</span>
-                614-316-3592
+                Call/Text
               </a>
             </div>
           </aside>
@@ -1672,7 +1759,7 @@
               Prefer direct contact? Use the phone or email options on the left.
               Or send a quick message below and I'll get back to you promptly.
             </p>
-            <form onsubmit="handleFormSubmit(event)">
+            <form action="https://formspree.io/f/mgovppnq" method="POST">
               <div class="form-grid form-grid-two">
                 <div class="field">
                   <label for="name">Name</label>
@@ -1715,7 +1802,7 @@
       <div>© <span id="year"></span> Mohamed Abdi — Commercial Multi-Engine Pilot</div>
       <div class="footer-links">
         <a data-scroll="#hero">Back to top</a>
-        <a data-scroll="#services">Experience</a>
+        <a data-scroll="#flight-experience">Flight Hours</a>
         <a data-scroll="#contact">Contact</a>
       </div>
     </div>
@@ -1753,7 +1840,7 @@
     });
 
     // Active nav link on scroll (simple)
-    const sections = ["#hero", "#services", "#projects", "#testimonials", "#experience", "#contact"]
+    const sections = ["#hero", "#flight-experience", "#projects", "#testimonials", "#experience", "#contact"]
       .map((id) => document.querySelector(id))
       .filter(Boolean);
 
@@ -1799,15 +1886,6 @@
         navToggle.setAttribute("aria-expanded", String(isOpen));
         navMobile.style.display = isOpen ? "block" : "none";
       });
-    }
-
-    // Simple demo form handler
-    function handleFormSubmit(event) {
-      event.preventDefault();
-      alert(
-        "Demo form submission.\n\nFor direct contact, please use:\nEmail: moha.abdi105@gmail.com\nPhone: 614-316-3592"
-      );
-      event.target.reset();
     }
   </script>
 </body>

@@ -155,7 +155,7 @@ function updateCopyrightYear() {
     
     yearElements.forEach(element => {
         if (element.textContent.includes('©')) {
-            element.textContent = element.textContent.replace(/\d{4}/, currentYear);
+            element.textContent = element.textContent.replace(/© \d{4}/, `© ${currentYear}`);
         }
     });
 }
